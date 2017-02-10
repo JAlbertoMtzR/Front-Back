@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="fonts/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrapValidator.min.css">
+  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="js/bootstrapValidator.min.js"></script>
+</head>
+<body>
+
+<div class="container desc" style="padding: 0%;">
+<div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 espaciotitu">
+<span><h3 class="textjustify textwhite">Nos interesa mucho tu opinión, envíanos tus comentarios y sugerencias.</h3></span>
+<span><h1 class="textcenter textwhite"><i class="fa fa-envelope fa-4x" aria-hidden="true"></i></h1></span>
+<span><h1 class="textcenter textwhite" id="saludo"></h1></span>
+</div>
+<div id='hora' style="display: none;"></div>
+
+
+</div>
+<div class="col-lg-7 col-md-4 col-sm-12 col-xs-12 tituformulario" style="padding: 0%;">
+<div class="">
+<div class="shadow">
+<h4 class="textwhite espacioshadow textpadding">Contáctanos</h4>
+</div>
+</div>
+<form id="contacto" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 formulario" style="padding: 0%; margin: 0%;" method="POST">
+<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 espacioboton ">
+<div class="form-group espacioform col-lg-12">
+<input class="form-control" name="correo" id="correo" type="text" placeholder="Correo electrónico" style="border-radius: 0px;" />
+</div>
+<div class="form-group  col-lg-12">
+<input class="form-control" name="nombre" id="nombre" type="text" placeholder="Nombres(s)" style="border-radius: 0px;" />
+</div>
+<div class="form-group  col-lg-12">
+<input class="form-control" name="apellido" id="apellido" type="text" placeholder="Apellido" style="border-radius: 0px;" />
+</div>
+</div>
+<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 form-group ">
+<div class="form-group espacioform col-lg-12">
+<input class="form-control" name="asunto" id="asunto" type="text" placeholder="Asunto" style="border-radius: 0px;" />
+</div>
+<div class="form-group  col-lg-12">
+<input class="form-control" name="titulo" id="titulo" type="text" placeholder="Título" style="border-radius: 0px;" />
+</div>
+  <div class="form-group col-lg-12"><textarea class="form-control" rows="5" name="comentario" id="comentario" placeholder="Redacte su mensaje aquí..." style="border-radius: 0px;"></textarea></div>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 formularioboton">
+<div class="textcenter espaciop col-lg-6"><button id="btnenviar" class="btns" name="btnenviar">Contactar</button>
+</div>
+
+</div>
+</form><!--formulario-->
+</div>
+</div><!--desc-->
+</body>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    Reloj();
+
+
+    $('#contacto').bootstrapValidator({
+              message: 'Este campo es obligatorio',
+              feedbackIcons: {
+                  valid: 'glyphicon glyphicon-ok',
+                  invalid: 'glyphicon glyphicon-remove',
+                  validating: 'glyphicon glyphicon-refresh'
+              },
+              fields: {
+                correo: {
+                validators: {
+                    notEmpty: {
+                        message: 'Campo Requerido'
+                    },
+                    emailAddress: {
+           message: 'El correo electronico no es valido'
+ 
+         }
+                }
+            },
+            nombre: {
+                      validators: {
+                          notEmpty: {
+                              message: 'Este campo es obligatorio'
+                          }
+                      }
+                  },
+                  apellido: {
+                      validators: {
+                          notEmpty: {
+                              message: 'Este campo es obligatorio'
+                          }
+                      }
+                  },
+                  asunto: {
+                      validators: {
+                          notEmpty: {
+                              message: 'Este campo es obligatorio'
+                          }
+                      }
+                  },
+                  titulo: {
+                      validators: {
+                          notEmpty: {
+                              message: 'Este campo es obligatorio'
+                          }
+                      }
+                  },
+                  comentario: {
+                      validators: {
+                          notEmpty: {
+                              message: 'Este campo es obligatorio'
+                          }
+                      }
+                  },
+              },
+              onSuccess: function(e, data) {
+                  envia();
+              }
+
+            });
+
+    });
+
+
+function Reloj() {
+var tiempo = new Date();
+var hora = tiempo.getHours();
+document.getElementById('hora').innerHTML = hora;
+
+if (hora < 12) {
+    $('#saludo').html('Buenos Días <i class="fa fa-sun-o" aria-hidden="true"></i>');
+}
+else{
+    if(hora < 19)
+    {
+        $('#saludo').html('Buenas Tardes <i class="fa fa-sun-o" aria-hidden="true"></i>');
+    }
+    else{
+        $('#saludo').html('Buenas Noches <i class="fa fa-moon-o" aria-hidden="true"></i>');
+    }
+}
+
+}
+
+
+function envia() {
+            var postData = $('#contacto').serializeArray();
+            var formURL = "correo.php";
+            $.ajax({
+                url : formURL,
+                type: "POST",
+                async: false,
+                data : postData,
+                success:function(data, textStatus) 
+                {
+                    
+                    $("#contacto").html(data);
+
+                },
+                error: function(jqXHR, textStatus) 
+                {
+          //alert(textStatus);
+                    $("#errormsg").html(textStatus);
+                }
+            });
+          }
+</script>
+</html>
