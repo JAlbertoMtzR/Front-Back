@@ -3,10 +3,32 @@ body{
 	
     font-family: 'Ubuntu', sans-serif !important;
 }
-.contacto{
-    background-image: url('../img/fondocontacto2.jpg');
+.parallax { 
+    /* The image used */
+    background-image: url("../img/fondocontacto2.jpg");
+    padding: 0px;
+
+    /* Set a specific height */
+    /*height: 500px;*/ 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
-    padding: 20px;
+}
+.parallaxheader { 
+    /* The image used */
+    background-image: url("../img/image.jpg");
+
+    /* Set a specific height */
+    height: 600px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .desc{
 	padding: 0%;
