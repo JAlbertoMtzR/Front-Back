@@ -35,17 +35,17 @@ $(document).ready(function(){
                             $('.box-success').hide(0).html('Espera un momento…');
                             $('.box-success').slideDown(timeSlide);
                             setTimeout(function(){
-                                window.location.href = "BPDM.php";
+                                window.location.href = "index.php";
                             },(timeSlide + 500));
                         }
                          
 //caso contrario los datos son incorrectos
                         else{
                             $('#alertBoxes').html('<div class="box-error"></div>');
-                            $('.box-error').hide(0).html('Lo sentimos, pero los datos son incorrectos');
+                            $('.box-error').hide(0).html('Datos son incorrectos');
                             $('.box-error').slideDown(timeSlide);
                             $('.box-error').delay(1500);
-                $('.box-error').slideUp(500);
+                            $('.box-error').slideUp(500);
                         }
                         $('#timer').fadeOut(300);
                     },
@@ -53,8 +53,10 @@ $(document).ready(function(){
                     error:function(){
                         $('#timer').fadeOut(300);
                         $('#alertBoxes').html('<div class="box-error"></div>');
-                        $('.box-error').hide(0).html('Ha ocurrido un error durante la ejecución');
+                        $('.box-error').hide(0).html('Error de ejecución');
                         $('.box-error').slideDown(timeSlide);
+                        $('.box-error').delay(1500);
+                        $('.box-error').slideUp(500);
                     }
                 });
                  

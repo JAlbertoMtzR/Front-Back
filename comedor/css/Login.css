@@ -23,6 +23,7 @@ body{
     position: absolute;
     width: 300px;
     text-align: left;
+    z-index: 2;
     
 }
 .loginBlock{
@@ -62,31 +63,32 @@ body{
     border-width: 1px;
     border-style: solid;
     margin: 0px;
-    padding: 5px;
+    padding: 40px;
     background-repeat: no-repeat;
     background-position: 0px 50%;
-    text-align: left;
+    text-align: center;
+
     
 }
 .box-info {
     color: #00529b;
-    background-color: #bde5f8;
-    border-color: #00529b;
+    background-color: #fff;
+    border-color: #fff;
 }
 .box-success {
     color: #4f8a10;
-    background-color: #dff2bf;
-    border-color: #4f8a10;
+    background-color: #fff;
+    border-color: #fff;
 }
 .box-alert {
     color: #9f6000;
-    background-color: #feefb3;
-    border-color: #9f6000;
+    background-color: #fff;
+    border-color: #fff;
 }
 .box-error {
     color: #d8000c;
-    background-color: #ffbaba;
-    border-color: #d8000c;
+    background-color: #fff;
+    border-color: #fff;
 }
  
 .session_on{

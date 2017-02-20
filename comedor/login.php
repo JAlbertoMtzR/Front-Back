@@ -32,16 +32,16 @@ if ( isset($_SESSION['username']) && isset($_SESSION['userid']) && $_SESSION['us
 else{
     echo '<div class="col-lg-12">
            <form method="post" action="">
-             <div class="col-lg-12" style="text-align: center">
-               <a href="index.php" class="back fa fa-arrow-left fa-2x"></a> <label><h1>Login</h1></label>
+             <div class="col-lg-12" style="text-align: center;z-index: 1">
+               <a href="index.php" class="back fa fa-arrow-left fa-2x"></a> <label style="color:white;"><h1>Login</h1></label>
              </div>
              <div class="form-group">
-               <label><h4><i class="fa fa-user fa-lg"></i> Usuario</h4></label>
-               <input type="text" name="login_username" id="login_username" class="form-control" />
+               <label style="color:white;"><h4><i class="fa fa-user fa-lg"></i> Usuario</h4></label>
+               <input style="color:white;" type="text" name="login_username" id="login_username" class="form-control" />
              </div>
              <div class="form-group">
-               <label style="text-align: left;"><h4><i class="fa fa-lock fa-lg"></i> Contraseña</h4></label><br />
-               <input type="password" name="login_userpass" id="login_userpass" class="form-control" />
+               <label style="color:white;"><h4><i class="fa fa-lock fa-lg"></i> Contraseña</h4></label><br />
+               <input style="color:white;" type="password" name="login_userpass" id="login_userpass" class="form-control" />
              </div>
              <div class="form-group" style="text-align: center">
                  <button id="login_userbttn" onclick="" class="btn btn-raised btn-primary">Login</button>
