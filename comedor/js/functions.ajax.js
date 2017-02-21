@@ -32,7 +32,7 @@ $(document).ready(function(){
                     success:function(msj){
                         if ( msj == 1 ){
                             $('#alertBoxes').html('<div class="box-success"></div>');
-                            $('.box-success').hide(0).html('Espera un momento…');
+                            $('.box-success').hide(0).html('Espere un momento…');
                             $('.box-success').slideDown(timeSlide);
                             setTimeout(function(){
                                 window.location.href = "index.php";
@@ -42,7 +42,7 @@ $(document).ready(function(){
 //caso contrario los datos son incorrectos
                         else{
                             $('#alertBoxes').html('<div class="box-error"></div>');
-                            $('.box-error').hide(0).html('Datos son incorrectos');
+                            $('.box-error').hide(0).html('Datos son incorrectos'+ msj);
                             $('.box-error').slideDown(timeSlide);
                             $('.box-error').delay(1500);
                             $('.box-error').slideUp(500);
@@ -80,13 +80,21 @@ $(document).ready(function(){
      
 //funcion para destruir la sesion iniciada 
     $('#sessionKiller').click(function(){
+        alertify.confirm("<p>Cerrar Sesión.<br><br>¿Estas seguro que deseas cerar sesion?</p>", function (e) {
+                    if (e) {
+                        alertify.log("Espere un momento cerrando sesion");
+                        //alertify.log("Espere un momento cerrando sesion"); 
         $('#timer').fadeIn(300);
         $('#alertBoxes').html('<div class="box-success"></div>');
-        $('.box-success').hide(0).html('Espera un momento');
+        $('.box-success').hide(0).html('Cerrando sesión');
         $('.box-success').slideDown(timeSlide);
         setTimeout(function(){
             window.location.href = "logout.php";
         },2500);
+                    } else { 
+                    }
+                }); 
+        
     });
      
 });
