@@ -123,16 +123,16 @@ include 'tabla.php';
     <p class="category">Si el articulo no esta, registrelo aqui</p>
   </div>
 
-           <div id="mensaje"></div>
            <div class="container-fluid">
            <form id="frmAlta" action="" method="POST" class="col-lg-12">
 
-              <div class="col-lg-12">
+           <div class="col-lg-3">
+           	<div class="col-lg-12">
                 <input type="hidden" id="id" name="id"  class="form-control" value="0" />
               </div>               
 
 
-              <div class="form-group col-lg-6">
+              <div class="form-group col-lg-12">
                 <select name="tipo" id="tipo" class="form-control" >
                             <option selected value="selected">Tipo de articulo</option>
                             <option  value="1">Consumible</option>
@@ -142,25 +142,20 @@ include 'tabla.php';
 
 
 
-              <div class="form-group col-lg-6">
+              <div class="form-group col-lg-12">
                 <input type="text" id="nombre" name="nombre"  class="form-control" placeholder="Nombre del Artículo" />
               </div>  
+   
 
 
 
-              <div class="form-group col-lg-4">
-                <input type="text" id="social" name="social"  class="form-control" placeholder="Costo compra" />
-              </div>    
-
-
-
-              <div class="form-group col-lg-4">
+              <div class="form-group col-lg-12">
                 <input type="text" id="social" name="social"  class="form-control" placeholder="Costo venta" />
               </div>  
 
 
 
-              <div class="form-group col-lg-4">
+              <div class="form-group col-lg-12">
                 <input type="text" id="social" name="social"  class="form-control" placeholder="Unidad " />
               </div>        
 
@@ -168,6 +163,44 @@ include 'tabla.php';
               <div class="col-lg-12">
                    <button href="#" name="btn-send" id="btn-send" class="btn btn-warning">Agregar</button>
               </div>
+           </div>
+           <div class="col-lg-9">
+           	<table class="table" id="tabla">
+  
+  <thead class="text-danger">
+  <tr>
+    <td>Tipo Articulo</td>
+    <td>Nombre de articulo</td>
+    <td>Costo venta</td>
+    <td>Unidad</td>
+    <td>Editar</td>
+    <td>Eliminar</td>
+</tr>
+  </thead>
+  <tbody class="searchable" style="font-size: 10px">
+    
+
+<tr>
+<td><h5>Venta</h5></td>
+<td><h5>Coca 500m</h5></td>
+<td><h5>15</h5></td>
+<td><h5>Pz</h5></td>
+<td align="center"><a href="#" onclick=" return cargardatos('.intval($row["ID_Cliente"]).')" id=label-primary" style="cursor: pointer" data-toggle="collapse" data-target="#demo"><i class="fa fa-pencil"></i> Editar</a></td>
+<td><form id="frm_activa'.$i.'" class="btn-a" method="POST" >
+<input type="hidden" name="id" id="id" value="'.$row["ID_Cliente"].'">
+<input type="hidden" name="Estatus" id="Estatus" value="'.$row["Estatus"].'">
+</form>
+</td>
+                      
+                      </tr>
+
+
+  </tbody>
+
+
+</table>
+           </div>
+
               
 </form>
 </div>
