@@ -1,7 +1,24 @@
 <?php
 include_once("../funciones/consulta.php");
 ?> 
-
+<style type="text/css">
+  .pag_btn{
+    background-color: #00d3ee;
+    color: #ffffff;
+    border-radius: 3px;
+    font-size: 16px;
+    height: 31px;
+    width: 78px;
+    text-align: center;
+    /* margin-left: 72px; */
+    box-shadow: 0 12px 20px -10px rgba(0, 188, 212, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 188, 212, 0.2);
+    cursor: pointer;
+}
+.pag_num
+{
+  padding: 10px;
+}
+</style>
 
 
  <div class="input-group col-lg-11"> <span class="input-group-addon">Buscar articulo</span>
