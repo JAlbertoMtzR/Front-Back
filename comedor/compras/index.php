@@ -378,7 +378,7 @@ $(document).ready(function() {
           }
 
           function cargardatos(ID){
-            var formURL = "catClientes/leer_datos_clientes.php";
+            var formURL = "leer_datos_articulos.php";
             $.ajax({
                 url : formURL,
                 type: "POST",
@@ -391,12 +391,10 @@ $(document).ready(function() {
                  data = JSON.parse(data);
                     $('#modo').val(1);
                     $('#id').val(ID);
+                    $('#tipo').val(data.Tipo);
                     $('#nombre').val(data.Nombre);
-                    $('#social').val(data.Social);
-                    $('#rfc').val(data.RFC);
-                    $('#direccion').val(data.Direccion);
-                    $('#telefono').val(data.Telefono);
-                    $('#correo').val(data.Correo);
+                    $('#costo').val(data.Costo);
+                    $('#unidad').val(data.Unidad);
                 },
                 error: function(jqXHR, textStatus) 
                 {

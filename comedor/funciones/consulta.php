@@ -68,9 +68,9 @@ return $tabla;
 }
 
 
-function get_leer_clientes($ID) {
+function leer_articulos($ID) {
       include '../conexion/conexion.php';
-      $sql = "SELECT Nombre, RazonSocial, RFC, Direccion, Telefono, Correo FROM catclientes WHERE ID_Cliente =".$ID;
+      $sql = "SELECT id,tipoArticulo,nombreArticulo,costoVenta,unidad FROM articulos WHERE id =".$ID;
 
       $result = $conectar->query($sql);
       if ($result->num_rows > 0) {
@@ -78,12 +78,10 @@ function get_leer_clientes($ID) {
         while($row = $result->fetch_assoc()) {
           
           $leer= [
-        "Nombre" =>utf8_encode($row["Nombre"]),
-        "Social" => utf8_encode($row["RazonSocial"]),
-        "RFC" => utf8_encode($row["RFC"]),
-        "Direccion" => utf8_encode($row["Direccion"]),
-        "Telefono" => utf8_encode($row["Telefono"]),
-        "Correo" => utf8_encode($row["Correo"]),
+        "Tipo" =>utf8_encode($row["tipoArticulo"]),
+        "Nombre" => utf8_encode($row["nombreArticulo"]),
+        "Costo" => utf8_encode($row["costoVenta"]),
+        "Unidad" => utf8_encode($row["unidad"]),
       ];
         }
       }

@@ -5,7 +5,7 @@
 
 			$ID = $_POST['TID'];
 
-			$respuesta = get_leer_clientes($ID);
+			$respuesta = leer_articulos($ID);
 			
 		echo $respuesta;
 		

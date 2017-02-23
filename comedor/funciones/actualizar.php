@@ -1,22 +1,20 @@
 <?php
 
-	function actualizar_clientes($params,$ID) {
+	function actualizar_articulos($params,$ID) {
 		include '../conexion/conexion.php';
 
-		    $NOM = $params['Nombre'];
-			$SOC = $params['Social'];
-			$RFC = $params['RFC'];
-			$DIR = $params['Direccion'];
-			$TEL = $params['Telefono'];
-			$COR = $params['Correo'];
+		    $TIP = $params['Tipo'];
+	        $NOM = $params['Nombre'];
+			$COS = $params['Costo'];
+			$UNI = $params['Unidad'];
 
 
-		$sql = "UPDATE catclientes SET Nombre = '".$NOM."', RazonSocial = '".$SOC."', RFC='".$RFC."', Direccion= '".$DIR."', Telefono= '".$TEL."',Correo= '".$COR."'
-		        WHERE ID_Cliente = ".$ID;
+		$sql = "UPDATE articulos SET tipoArticulo = ".$TIP.",nombreArticulo = '".$NOM."', costoVenta = ".$COS.", unidad='".$UNI."'
+		        WHERE id = ".$ID;
 		$result = $conectar->query($sql);
 		$ok = ($result) ? true : false;
 		$conectar->close();
-		$mensaje = ($ok) ? '<h1><span class="span8 label label-info col-lg-12">El cliente "'.$NOM.'" Se ha editado correctamente</span></h1>' : '<h1><span class="span8 label label-danger col-lg-12">Error al editar "'.$NOM.'"</span></h1>';
+		$mensaje = ($ok) ? 'El articulo "'.$NOM.'" Se ha editado correctamente' : 'Error al editar';
 		return $mensaje;
 	}
 	function estatus_clientes($id,$estatus) {

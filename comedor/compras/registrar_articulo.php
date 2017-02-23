@@ -15,7 +15,7 @@ include '../funciones/actualizar.php';
 
 					if ($modo == 1) 
 					{
-					  $respuesta= actualizar_clientes($datos,$ID);
+					  $respuesta= actualizar_articulos($datos,$ID);
 					}
 					else
 					{
