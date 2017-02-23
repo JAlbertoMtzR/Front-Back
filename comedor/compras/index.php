@@ -173,7 +173,7 @@ include 'tabla.php';
 
 
               <div class="col-lg-12">
-                   <button href="#" name="btn-send" id="btn-send" class="btn btn-warning">Agregar</button>
+                   <center><button href="#" name="btn-send" id="btn-send" class="btn btn-warning">Agregar</button></center>
               </div>
            </div>
            <div class="col-lg-9">
