@@ -112,9 +112,20 @@ if(empty($_SESSION['username'])) header('Location: ../login.php');
       <div class="content">
 
       <div class="content">
+      <div class="card">
+  <div class="card-header" data-background-color="blue">
+    <h4 class="title">Agregar Compra</h4>
+    <p class="category">Seleccione el articulo que desea agregar a la compra del dia de hoy, junto con su unidad</p>
+  </div>
+  <div class="card-content table-responsive table-full-width">
+  <div class="input-group col-lg-11"> <span class="input-group-addon">Buscar articulo</span>
+                 <input id="filter" type="text" class="form-control" placeholder="Escribe aquí...">
+                </div>
 <?php
 include 'tabla.php';
 ?>
+</div>
+</div>
 
 </div>
         <div class="card">
@@ -129,12 +140,13 @@ include 'tabla.php';
            <div class="col-lg-3">
            	<div class="col-lg-12">
                 <input type="hidden" id="id" name="id"  class="form-control" value="0" />
+                <input type="hidden" id="modo" name="modo"  class="form-control" value="0" />
               </div>               
 
 
               <div class="form-group col-lg-12">
                 <select name="tipo" id="tipo" class="form-control" >
-                            <option selected value="selected">Tipo de articulo</option>
+                            <option selected>Tipo de articulo</option>
                             <option  value="1">Consumible</option>
                             <option  value="2">Venta</option>
                           </select>
@@ -150,13 +162,13 @@ include 'tabla.php';
 
 
               <div class="form-group col-lg-12">
-                <input type="text" id="social" name="social"  class="form-control" placeholder="Costo venta" />
+                <input type="text" id="costo" name="costo"  class="form-control" placeholder="Costo venta" />
               </div>  
 
 
 
               <div class="form-group col-lg-12">
-                <input type="text" id="social" name="social"  class="form-control" placeholder="Unidad " />
+                <input type="text" id="unidad" name="unidad"  class="form-control" placeholder="Unidad " />
               </div>        
 
 
@@ -165,40 +177,9 @@ include 'tabla.php';
               </div>
            </div>
            <div class="col-lg-9">
-           	<table class="table" id="tabla">
-  
-  <thead class="text-danger">
-  <tr>
-    <td>Tipo Articulo</td>
-    <td>Nombre de articulo</td>
-    <td>Costo venta</td>
-    <td>Unidad</td>
-    <td>Editar</td>
-    <td>Eliminar</td>
-</tr>
-  </thead>
-  <tbody class="searchable" style="font-size: 10px">
-    
-
-<tr>
-<td><h5>Venta</h5></td>
-<td><h5>Coca 500m</h5></td>
-<td><h5>15</h5></td>
-<td><h5>Pz</h5></td>
-<td align="center"><a href="#" onclick=" return cargardatos('.intval($row["ID_Cliente"]).')" id=label-primary" style="cursor: pointer" data-toggle="collapse" data-target="#demo"><i class="fa fa-pencil"></i> Editar</a></td>
-<td><form id="frm_activa'.$i.'" class="btn-a" method="POST" >
-<input type="hidden" name="id" id="id" value="'.$row["ID_Cliente"].'">
-<input type="hidden" name="Estatus" id="Estatus" value="'.$row["Estatus"].'">
-</form>
-</td>
-                      
-                      </tr>
-
-
-  </tbody>
-
-
-</table>
+           	<?php
+            include 'tabla_articulos.php';
+            ?> 
            </div>
 
               
@@ -334,29 +315,14 @@ $(document).ready(function() {
                           }
                       }
                   },
-                  social: {
+                  tipo: {
                       validators: {
                           notEmpty: {
                               message: 'Este campo es obligatorio'
                           }
                       }
                   },
-                  rfc: {
-                      validators: {
-                          notEmpty: {
-                              message: 'Este campo es obligatorio'
-                          }
-                      }
-                  },
-
-                  direccion: {
-                      validators: {
-                          notEmpty: {
-                              message: 'Este campo es obligatorio'
-                          }
-                      }
-                  },
-                  telefono: {
+                  nombre: {
                       validators: {
                           notEmpty: {
                               message: 'Este campo es obligatorio'
@@ -364,7 +330,14 @@ $(document).ready(function() {
                       }
                   },
 
-                  correo: {
+                  costo: {
+                      validators: {
+                          notEmpty: {
+                              message: 'Este campo es obligatorio'
+                          }
+                      }
+                  },
+                  unidad: {
                       validators: {
                           notEmpty: {
                               message: 'Este campo es obligatorio'
@@ -382,7 +355,7 @@ $(document).ready(function() {
 
             function envia() {
             var postData = $('#frmAlta').serializeArray();
-            var formURL = "catClientes/registrar_clientes.php";
+            var formURL = "registrar_articulo.php";
             $.ajax({
                 url : formURL,
                 type: "POST",
@@ -390,10 +363,11 @@ $(document).ready(function() {
                 data : postData,
                 success:function(data, textStatus) 
                 {
-                    //alert(data);
-                    $("#mensaje").html(data);
+                    alertify.log(data);
+                    //$("#mensaje").html(data);
                     $("#frmAlta input").val('');
-                    $("#tabla").load('catClientes/tabla.php');
+                    $("#tabla").load('tabla.php');
+                    $("#tabla_articulos").load('tabla_articulos.php');
                 },
                 error: function(jqXHR, textStatus) 
                 {

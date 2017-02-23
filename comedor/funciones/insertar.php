@@ -1,20 +1,18 @@
 <?php
-    function insertar_nuevo_cliente($params){
+    function insertar_nuevo_articulo($params){
 	include '../conexion/conexion.php';
 
+	        $TIP = $params['Tipo'];
 	        $NOM = $params['Nombre'];
-			$SOC = $params['Social'];
-			$RFC = $params['RFC'];
-			$DIR = $params['Direccion'];
-			$TEL = $params['Telefono'];
-			$COR = $params['Correo'];
+			$COS = $params['Costo'];
+			$UNI = $params['Unidad'];
 
-	    $sql = "INSERT INTO catclientes (ID_Empresa,Nombre,RazonSocial,RFC,Direccion,Telefono,Correo,FechaAlta,Estatus) 
-		VALUES (1,'".$NOM."','".$SOC."','".$RFC."','".$DIR."','".$TEL."','".$COR."',CURRENT_DATE,1)";
+	    $sql = "INSERT INTO articulos (tipoArticulo,nombreArticulo,costoVenta,unidad,FechaAlta,estatus) 
+		VALUES (".$TIP.",'".$NOM."',".$COS.",'".$UNI."',CURRENT_DATE,1)";
 		$result = $conectar->query($sql);
 		$ok = ($result) ? true : false;
 		$conectar->close();
-		$mensaje = ($ok) ? '<h1><span class="span8 label label-info col-lg-12">El cliente "'.$NOM.'" Se ha guardado Exitosamente</span></h1>' : '<h1><span class="span8 label label-danger col-lg-12">Error al guardar "'.$NOM.'"</span></h1>';
+		$mensaje = ($ok) ? 'El Articulo "'.$NOM.'" Se ha guardado Exitosamente' : 'Error al guardar';
 		return $mensaje;
      }
      function insertar_nuevo_obra($params){

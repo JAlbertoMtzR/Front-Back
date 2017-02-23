@@ -6,12 +6,10 @@ include '../funciones/actualizar.php';
                 $modo = $_POST['modo'];
                 $ID = $_POST['id'];
 				$datos = [
+				"Tipo" => utf8_decode($_POST['tipo']),
 				"Nombre" => utf8_decode($_POST['nombre']),
-				"Social" =>utf8_decode($_POST['social']),
-				"RFC" => utf8_decode($_POST['rfc']),
-				"Direccion" => utf8_decode($_POST['direccion']),
-				"Telefono" => intval($_POST['telefono']),
-				"Correo" => utf8_decode($_POST['correo']),
+				"Costo" =>utf8_decode($_POST['costo']),
+				"Unidad" => utf8_decode($_POST['unidad']),
 					];
 
 
@@ -21,7 +19,7 @@ include '../funciones/actualizar.php';
 					}
 					else
 					{
-                      $respuesta= insertar_nuevo_cliente($datos);
+                      $respuesta= insertar_nuevo_articulo($datos);
 					}
 				
 				echo $respuesta;

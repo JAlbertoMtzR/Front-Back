@@ -1,8 +1,8 @@
 <?php
-function consulta_clientes(){
+function lista_articulos_compras(){
 	include '../conexion/conexion.php';
 
-$sql = "SELECT ID_Cliente, Nombre, RazonSocial, RFC, Direccion, Telefono, Correo, CONVERT(FechaAlta,char(10)) FechaAlta, Estatus FROM catclientes";
+$sql = "SELECT id,tipoArticulo,nombreArticulo,costoVenta,unidad, CONVERT(FechaAlta,char(10)) FechaAlta, estatus FROM articulos";
 $result = $conectar->query($sql);
 $tabla='';
 
@@ -11,23 +11,15 @@ if ($result->num_rows > 0) {
   $tabla='';
     // output data of each row
     while($row = $result->fetch_assoc()) {
-      $Estatus = ($row["Estatus"] == 1) ? '<span class="label label-success" style="cursor: pointer"><i class="fa fa-thumbs-up"></i> Activo</span>' : '<span class="label label-danger" style="cursor: pointer"><i class="fa fa-thumbs-down"></i> Inactivo</span>';  
+      $Estatus = ($row["estatus"] == 1) ? '<span class="label label-success" style="cursor: pointer"><i class="fa fa-thumbs-up"></i> Activo</span>' : '<span class="label label-danger" style="cursor: pointer"><i class="fa fa-thumbs-down"></i> Inactivo</span>';  
         $tabla.= '<tr>
-                      <td align="center"><h5>'.utf8_encode($row["ID_Cliente"]).'</h5></td>
-                      <td><h5>'.utf8_encode($row["Nombre"]).'</h5></td>
-                      <td><h5>'.utf8_encode($row["RazonSocial"]).'</h5></td>
-                      <td><h5>'.utf8_encode($row["RFC"]).'</h5></td>
-                      <td><h5>'.utf8_encode($row["Direccion"]).'</h5></td>
-                      <td><h5>'.utf8_encode($row["Telefono"]).'</h5></td>
-                      <td><h5>'.utf8_encode($row["Correo"]).'</h5></td>
-                      <td align="center"><a href="#" onclick=" return cargardatos('.intval($row["ID_Cliente"]).')" id="editar" class="label label-primary" style="cursor: pointer" data-toggle="collapse" data-target="#demo"><i class="fa fa-pencil"></i> Editar</a></td>
-                      <td><form id="frm_activa'.$i.'" class="btn-a" method="POST" >
-                      '.$Estatus.'
-                      <input type="hidden" name="id" id="id" value="'.$row["ID_Cliente"].'">
-                      <input type="hidden" name="Estatus" id="Estatus" value="'.$row["Estatus"].'">
-                      </form>
-                      </td>
-                      
+                      <td align="center"><h5><input type="checkbox" /></h5></td>
+                      <td><h5>'.utf8_encode($row["nombreArticulo"]).'</h5></td>
+                      <td><h5><input type="text" id="preciocompra" name="preciocompra"  class="form-control col-lg-12" value="" /></h5></td>
+                      <td><h5>'.utf8_encode($row["costoVenta"]).'</h5></td>
+                      <td><h5>'.utf8_encode($row["unidad"]).'</h5></td>
+                      <td><h5><input type="text" id="cantidad" name="cantidad"  class="form-control col-lg-12" value="" /></h5></td>
+                      <td><h5><input type="text" id="total" name="total"  class="form-control col-lg-12" value="" /></h5></td>
                       </tr>';
         $i++;
     }
@@ -37,6 +29,45 @@ if ($result->num_rows > 0) {
 $conectar->close();
 return $tabla;
 }
+
+function lista_articulos(){
+	include '../conexion/conexion.php';
+
+$sql = "SELECT id,tipoArticulo,nombreArticulo,costoVenta,unidad, CONVERT(FechaAlta,char(10)) FechaAlta, estatus FROM articulos";
+$result = $conectar->query($sql);
+$tabla='';
+
+if ($result->num_rows > 0) {
+  $i=1;
+  $tabla='';
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+      $Estatus = ($row["estatus"] == 1) ? '<span class="alert alert-success" style="cursor: pointer"><i class="fa fa-thumbs-up"></i> Activo</span>' : '<span class="alert alert-danger" style="cursor: pointer"><i class="fa fa-thumbs-down"></i> Inactivo</span>';
+
+       $tipoarticulo =  ($row["tipoArticulo"] == 1) ? 'Consumible' : 'Venta';
+        $tabla.= '<tr>
+                      <td><h5>'.$tipoarticulo.'</h5></td>
+                      <td><h5>'.utf8_encode($row["nombreArticulo"]).'</h5></td>
+                      <td><h5>'.utf8_encode($row["costoVenta"]).'</h5></td>
+                      <td><h5>'.utf8_encode($row["unidad"]).'</h5></td>
+                      <td align="center"><a href="#" onclick=" return cargardatos('.intval($row["id"]).')" id="editar" class="alert alert-info" style="cursor: pointer" data-toggle="collapse" data-target="#demo"><i class="fa fa-pencil"></i> Editar</a></td>
+                      <td><form id="frm_activa'.$i.'" class="btn-a" method="POST" >
+                      '.$Estatus.'
+                      <input type="hidden" name="id" id="id" value="'.$row["id"].'">
+                      <input type="hidden" name="Estatus" id="Estatus" value="'.$row["estatus"].'">
+                      </form>
+                      </td>
+                      </tr>';
+        $i++;
+    }
+} else {
+    echo "0 results";
+}
+$conectar->close();
+return $tabla;
+}
+
+
 function get_leer_clientes($ID) {
       include '../conexion/conexion.php';
       $sql = "SELECT Nombre, RazonSocial, RFC, Direccion, Telefono, Correo FROM catclientes WHERE ID_Cliente =".$ID;
