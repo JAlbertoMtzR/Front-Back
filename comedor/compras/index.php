@@ -137,7 +137,7 @@ include 'tabla.php';
            <div class="container-fluid">
            <form id="frmAlta" action="" method="POST" class="col-lg-12">
 
-           <div class="col-lg-3">
+           <div class="col-lg-3" style="    margin-top: -40px;">
            	<div class="col-lg-12">
                 <input type="hidden" id="id" name="id"  class="form-control" value="0" />
                 <input type="hidden" id="modo" name="modo"  class="form-control" value="0" />
