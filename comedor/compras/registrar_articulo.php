@@ -4,7 +4,7 @@ include '../funciones/actualizar.php';
 
                 $respuesta='';
                 $modo = $_POST['modo'];
-                $ID = $_POST['id'];
+                $ID = $_POST['idart'];
 				$datos = [
 				"Tipo" => utf8_decode($_POST['tipo']),
 				"Nombre" => utf8_decode($_POST['nombre']),

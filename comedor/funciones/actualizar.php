@@ -9,12 +9,11 @@
 			$UNI = $params['Unidad'];
 
 
-		$sql = "UPDATE articulos SET tipoArticulo = ".$TIP.",nombreArticulo = '".$NOM."', costoVenta = ".$COS.", unidad='".$UNI."'
-		        WHERE id = ".$ID;
+		$sql = "UPDATE articulos SET tipoArticulo = ".$TIP.",nombreArticulo = '".$NOM."', costoVenta = ".$COS.", unidad='".$UNI."' WHERE id = ".$ID;
 		$result = $conectar->query($sql);
 		$ok = ($result) ? true : false;
 		$conectar->close();
-		$mensaje = ($ok) ? 'El articulo "'.$NOM.'" Se ha editado correctamente' : 'Error al editar';
+		$mensaje = ($ok) ? 'El articulo "'.$ID.'" Se ha editado correctamente' : 'Error al editar';
 		return $mensaje;
 	}
 	function estatus_clientes($id,$estatus) {

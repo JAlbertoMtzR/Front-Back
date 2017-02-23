@@ -139,8 +139,10 @@ include 'tabla.php';
 
            <div class="col-lg-3" style="    margin-top: -40px;">
            	<div class="col-lg-12">
-                <input type="hidden" id="id" name="id"  class="form-control" value="0" />
                 <input type="hidden" id="modo" name="modo"  class="form-control" value="0" />
+              </div>
+              <div>
+                <input type="hidden" id="idart" name="idart"  class="form-control" value="0" />
               </div>               
 
 
@@ -173,7 +175,7 @@ include 'tabla.php';
 
 
               <div class="col-lg-12">
-                   <center><button href="#" name="btn-send" id="btn-send" class="btn btn-warning">Agregar</button></center>
+                   <center><button name="btn-send" id="btn-send" class="btn btn-warning">Agregar</button></center>
               </div>
            </div>
            <div class="col-lg-9">
@@ -387,10 +389,10 @@ $(document).ready(function() {
                 data : {'TID' : ID},
                 success:function(data,textStatus) 
                 {
-                  //alert(data);
+                  //alert(ID);
                  data = JSON.parse(data);
                     $('#modo').val(1);
-                    $('#id').val(ID);
+                    $('#idart').val(ID);
                     $('#tipo').val(data.Tipo);
                     $('#nombre').val(data.Nombre);
                     $('#costo').val(data.Costo);
