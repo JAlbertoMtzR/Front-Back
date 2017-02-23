@@ -1,8 +1,13 @@
-<?php session_start();
+<?php 
+session_start();
 if(empty($_SESSION['username'])) header('Location: login.php');
-  {
+  
     $usuario=$_SESSION['username'];
-    }
+    $id=$_SESSION['userid'];
+    $nombre=$_SESSION['nombre'];
+    $apellido=$_SESSION['apellidos'];
+    
+    
     ?>
 <!--  * Login Ajax Php Mysql:
   * Php mysql Ajax,
@@ -47,14 +52,14 @@ if(empty($_SESSION['username'])) header('Location: login.php');
 
       <div class="logo">
         <a href="" class="simple-text">
-          Comedor
+          <?php echo $nombre.' '.$apellido; ?>
         </a>
       </div>
 
         <div class="sidebar-wrapper">
               <ul class="nav">
                   <li class="active">
-                      <a href="index.php">
+                      <a href="">
                           <i class="material-icons">dashboard</i>
                           <p>Home</p>
                       </a>
@@ -63,6 +68,12 @@ if(empty($_SESSION['username'])) header('Location: login.php');
                       <a href="compras/">
                           <i class="material-icons">shopping_cart</i>
                           <p>Compras</p>
+                      </a>
+                  </li>
+                  <li class="">
+                      <a href="ventas/">
+                          <i class="material-icons">content_paste</i>
+                          <p>Ventas</p>
                       </a>
                   </li>
           <li class="active-pro">

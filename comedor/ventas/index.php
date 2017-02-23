@@ -67,14 +67,14 @@ if(empty($_SESSION['username'])) header('Location: ../login.php');
                           <p>Home</p>
                       </a>
                   </li>
-                  <li class="active">
-                      <a href="">
+                  <li class="">
+                      <a href="../compras">
                           <i class="material-icons">shopping_cart</i>
                           <p>Compras</p>
                       </a>
                   </li>
-                  <li class="">
-                      <a href="../ventas">
+                  <li class="active">
+                      <a href="">
                           <i class="material-icons">content_paste</i>
                           <p>Ventas</p>
                       </a>
