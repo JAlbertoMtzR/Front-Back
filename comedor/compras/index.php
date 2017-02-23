@@ -397,6 +397,9 @@ $(document).ready(function() {
                     $('#nombre').val(data.Nombre);
                     $('#costo').val(data.Costo);
                     $('#unidad').val(data.Unidad);
+
+                    $("#tabla").load('tabla.php');
+                    $("#tabla_articulos").load('tabla_articulos.php');
                 },
                 error: function(jqXHR, textStatus) 
                 {

@@ -50,7 +50,7 @@ if ($result->num_rows > 0) {
                       <td><h5>'.utf8_encode($row["nombreArticulo"]).'</h5></td>
                       <td><h5>'.utf8_encode($row["costoVenta"]).'</h5></td>
                       <td><h5>'.utf8_encode($row["unidad"]).'</h5></td>
-                      <td align="center"><a href="#" onclick=" return cargardatos('.intval($row["id"]).')" id="editar" class="alert alert-info" style="cursor: pointer" data-toggle="collapse" data-target="#demo"><i class="fa fa-pencil"></i> Editar</a></td>
+                      <td align="center"><a onclick=" return cargardatos('.intval($row["id"]).')" id="editar" class="alert alert-info" style="cursor: pointer"><i class="fa fa-pencil"></i> Editar</a></td>
                       <td><form id="frm_activa'.$i.'" class="btn-a" method="POST" >
                       '.$Estatus.'
                       <input type="hidden" name="id" id="id" value="'.$row["id"].'">
