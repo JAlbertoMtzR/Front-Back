@@ -4,9 +4,12 @@ include_once("../funciones/consulta.php");
 
 
 
+ <div class="input-group col-lg-11"> <span class="input-group-addon">Buscar articulo</span>
+                 <input id="filter" type="text" class="form-control" placeholder="Escribe aquí...">
+                </div>
 
-
-<table class="table table-hover" id="table" style="    margin-top: 95px;">
+<table class="table table-hover" id="table" style="        margin-top: 17px;
+">
   
   <thead class="text-danger">
   <tr>
