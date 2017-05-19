@@ -41,7 +41,7 @@ return $tabla;
 }
 
 function leer_articulos($ID) {
-      include '../conexion/conexion.php';
+      include 'conexion.php';
       $sql = "SELECT id,tipoArticulo,nombreArticulo,costoVenta,unidad FROM articulos WHERE id =".$ID;
 
       $result = $conectar->query($sql);
@@ -80,3 +80,21 @@ if ($result->num_rows > 0) {
 $conectar->close();
 return $select;
 }
+function get_select_deptos() {
+      include 'conexion.php';
+      $sql = "SELECT id,nombre FROM cat_departamentos WHERE estatus=1";
+      $result = $conectar->query($sql);
+      if ($result->num_rows > 0) {
+        $depto = '<select id="depto" name="depto" class="input-form" style="color:grey;">
+                <option value="" selected> Selecciona </option>';
+        while($row = $result->fetch_assoc()){
+          $depto .= '<option value="'.$row["id"].'">'.utf8_encode($row["nombre"]).'</option>';
+        }
+        $depto .= '</select>';
+      }
+      $conectar->close();
+      return $depto;
+    }
+     
+
+?>

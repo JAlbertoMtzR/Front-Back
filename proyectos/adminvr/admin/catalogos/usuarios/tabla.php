@@ -2,27 +2,36 @@
 $pahtc = "../../";
 include_once($pahtc."functions/select.php");
 ?> 
-<table class="table table-hover" id="tabla_articulos">
-  
-  <thead class="">
-  <tr>
-    <td>Nombre</td>
-    <td>Departamento</td>
-    <td>Editar</td>
-    <td>Estatus</td>
-</tr>
-  </thead>
-  <tbody class="searchable2" style="font-size: 10px">
-    
-<?php echo select_list_user();?>
+  <!--for demo wrap-->
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Departamento</th>
+          <th>Editar</th>
+          <th>Estatus</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table class="table table-hover" cellpadding="0" cellspacing="0" border="0">
+      <tbody class="searchable">
+       <?php echo select_list_user(); ?>
+      </tbody>
+    </table>
+  </div>
 
-  </tbody>
-
-
-</table>
-     <div align="center" id="paginador" ></div>
 
 <script type="text/javascript">
+$(window).on("load resize ", function() {
+  var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+  $('.tbl-header').css({'padding-right':scrollWidth});
+}).resize();
+
+
+
 
 function cargardatos(ID){
             var formURL = "leer_datos_articulos.php";

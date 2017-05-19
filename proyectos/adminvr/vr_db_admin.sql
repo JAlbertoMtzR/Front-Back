@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-05-2017 a las 22:56:51
+-- Tiempo de generación: 19-05-2017 a las 23:21:41
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -120,7 +120,14 @@ CREATE TABLE IF NOT EXISTS `cat_usuarios_colaboradores` (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estatus` bit(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `cat_usuarios_colaboradores`
+--
+
+INSERT INTO `cat_usuarios_colaboradores` (`id`, `nombre`, `id_departamento`, `fecha_alta`, `estatus`) VALUES
+(1, 'Ángeles Campos', 4, '2017-05-19 18:33:29', b'1');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
