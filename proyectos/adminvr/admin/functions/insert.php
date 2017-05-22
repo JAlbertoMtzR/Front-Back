@@ -5,8 +5,8 @@
 	        $NOM = $params['Nombre'];
 			$DEP = $params['Depto'];
 
-	    $sql = "INSERT INTO cat_usuarios_colaboradores (tipoArticulo,nombreArticulo,costoVenta,unidad,FechaAlta,estatus) 
-		VALUES (".$TIP.",'".$NOM."',".$COS.",'".$UNI."',CURRENT_DATE,1)";
+	    $sql = "INSERT INTO cat_usuarios_colaboradores (nombre,id_departamento,fecha_alta,estatus) 
+		VALUES ('".$NOM."',".$DEP.",CURRENT_DATE,1)";
 		$result = $conectar->query($sql);
 		$ok = ($result) ? true : false;
 		$conectar->close();

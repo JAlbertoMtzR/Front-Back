@@ -5,10 +5,9 @@ include $pahtc.'/functions/update.php';
 
                 $respuesta='';
                 $modo = $_POST['modo'];
-                $ID = $_POST['idart'];
 				$datos = [
 				"Nombre" => utf8_decode($_POST['nombre']),
-				"Depto" =>intval($_POST['depto']),
+				"Depto" =>$_POST['depto'],
 					];
 
 
@@ -18,7 +17,7 @@ include $pahtc.'/functions/update.php';
 					}
 					else
 					{
-                      $respuesta= insertar_nuevo_articulo($datos);
+                      $respuesta= insert_new_user_col($datos);
 					}
 				
 				echo $respuesta;

@@ -3,19 +3,7 @@ $pahtc = "../../";
 include_once($pahtc."functions/select.php");
 ?> 
   <!--for demo wrap-->
-  <div class="tbl-header">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Departamento</th>
-          <th>Editar</th>
-          <th>Estatus</th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div class="tbl-content">
+  <div class="tbl-content" id="tabla">
     <table class="table table-hover" cellpadding="0" cellspacing="0" border="0">
       <tbody class="searchable">
        <?php echo select_list_user(); ?>
