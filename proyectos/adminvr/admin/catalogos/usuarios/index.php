@@ -24,6 +24,7 @@ include_once($pahtc."functions/select.php");
         <div class="col-lg-4">
         	<form class="form-form">
   <h1 class="h1-form">Nuevo Usuario</h1>
+  <input class="input-form" name="modo" id="modo" value="0" type="hidden"/>
   <input class="input-form" placeholder="Nombre" type="text" required/>
   <?php echo get_select_deptos(); ?>
   <center><button class="button-form">Enviar</button></center>

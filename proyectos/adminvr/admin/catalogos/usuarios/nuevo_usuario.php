@@ -1,15 +1,14 @@
 <?php
-include '../funciones/insertar.php';
-include '../funciones/actualizar.php';
+$pahtc = "../../";
+include $pahtc.'/functions/insert.php';
+include $pahtc.'/functions/update.php';
 
                 $respuesta='';
                 $modo = $_POST['modo'];
                 $ID = $_POST['idart'];
 				$datos = [
-				"Tipo" => utf8_decode($_POST['tipo']),
 				"Nombre" => utf8_decode($_POST['nombre']),
-				"Costo" =>utf8_decode($_POST['costo']),
-				"Unidad" => utf8_decode($_POST['unidad']),
+				"Depto" =>intval($_POST['depto']),
 					];
 
 

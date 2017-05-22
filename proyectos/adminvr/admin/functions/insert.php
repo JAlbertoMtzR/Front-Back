@@ -1,13 +1,11 @@
 <?php
-    function insertar_nuevo_articulo($params){
-	include '../conexion/conexion.php';
+    function insert_new_user_col($params){
+	include 'conexion.php';
 
-	        $TIP = $params['Tipo'];
 	        $NOM = $params['Nombre'];
-			$COS = $params['Costo'];
-			$UNI = $params['Unidad'];
+			$DEP = $params['Depto'];
 
-	    $sql = "INSERT INTO articulos (tipoArticulo,nombreArticulo,costoVenta,unidad,FechaAlta,estatus) 
+	    $sql = "INSERT INTO cat_usuarios_colaboradores (tipoArticulo,nombreArticulo,costoVenta,unidad,FechaAlta,estatus) 
 		VALUES (".$TIP.",'".$NOM."',".$COS.",'".$UNI."',CURRENT_DATE,1)";
 		$result = $conectar->query($sql);
 		$ok = ($result) ? true : false;
