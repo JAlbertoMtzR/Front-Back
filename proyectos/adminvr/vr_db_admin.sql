@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-05-2017 a las 23:21:41
+-- Tiempo de generación: 22-05-2017 a las 22:46:10
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `cat_dominios` (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estatus` bit(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `cat_dominios`
@@ -120,14 +120,28 @@ CREATE TABLE IF NOT EXISTS `cat_usuarios_colaboradores` (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estatus` bit(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Volcado de datos para la tabla `cat_usuarios_colaboradores`
 --
 
 INSERT INTO `cat_usuarios_colaboradores` (`id`, `nombre`, `id_departamento`, `fecha_alta`, `estatus`) VALUES
-(1, 'Ángeles Campos', 4, '2017-05-19 18:33:29', b'1');
+(1, 'Ángeles Campos', 4, '2017-05-19 18:33:29', b'1'),
+(2, 'Jose Eugenio Ek', 4, '2017-05-22 05:00:00', b'1'),
+(3, 'Roger Leon', 4, '2017-05-22 05:00:00', b'1'),
+(4, 'Graciela Espinoza', 4, '2017-05-22 05:00:00', b'1'),
+(5, 'Laura Perez', 5, '2017-05-22 05:00:00', b'1'),
+(6, 'Jose Daniel Pardenilla', 5, '2017-05-22 05:00:00', b'1'),
+(7, 'Enrique Diaz', 5, '2017-05-22 05:00:00', b'1'),
+(8, 'Angelica', 5, '2017-05-22 05:00:00', b'1'),
+(9, 'Maria Villafaina', 5, '2017-05-22 05:00:00', b'1'),
+(10, 'Vanesa Blanco', 5, '2017-05-22 05:00:00', b'1'),
+(11, 'Alex Soares', 5, '2017-05-22 05:00:00', b'1'),
+(12, 'Dannuzzio Marchena', 5, '2017-05-22 05:00:00', b'1'),
+(13, 'Roberto Inclan', 5, '2017-05-22 05:00:00', b'1'),
+(14, 'Eliza Gonzalez', 5, '2017-05-22 05:00:00', b'1'),
+(15, 'Victor Trejo', 5, '2017-05-22 05:00:00', b'1');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
