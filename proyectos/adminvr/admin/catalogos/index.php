@@ -21,7 +21,7 @@ $navcat="";
                <div><p><span class=""><i class="fa fa-users" aria-hidden="true"></i></span>Usuarios</p></div>
                <div><p>Catalogo Usuarios</p></div></li>
              </a>
-             <a href="" class="col-lg-6">
+             <a href="departamentos/" class="col-lg-6">
                <li class="tile tile-big tile-6 slideTextLeft">
                <div><p><span class=""><i class="fa fa-building" aria-hidden="true"></i></span>Departamentos</p></div>
                <div><p>Catalogo Departamentos</p></div></li>

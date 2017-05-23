@@ -6,7 +6,7 @@ include_once($pahtc."functions/select.php");
   
     <table class="table table-hover" cellpadding="0" cellspacing="0" border="0">
       <tbody class="searchable">
-       <?php echo select_list_user(); ?>
+       <?php echo select_list_deptos(); ?>
       </tbody>
     </table>
   

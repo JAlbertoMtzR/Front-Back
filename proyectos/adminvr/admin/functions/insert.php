@@ -10,7 +10,7 @@
 		$result = $conectar->query($sql);
 		$ok = ($result) ? true : false;
 		$conectar->close();
-		$mensaje = ($ok) ? 'El Articulo "'.$NOM.'" Se ha guardado Exitosamente' : 'Error al guardar';
+		$mensaje = ($ok) ? '<h3><span class="label label-success">"'.$NOM.'" Se ha guardado</span></h3>' : 'Error al guardar';
 		return $mensaje;
      }
      function insertar_nuevo_obra($params){

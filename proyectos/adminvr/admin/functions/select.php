@@ -40,9 +40,9 @@ $conectar->close();
 return $tabla;
 }
 
-function leer_articulos($ID) {
+function leer_usuarios_col($ID) {
       include 'conexion.php';
-      $sql = "SELECT id,tipoArticulo,nombreArticulo,costoVenta,unidad FROM articulos WHERE id =".$ID;
+      $sql = "SELECT id,nombre,id_departamento FROM cat_usuarios_colaboradores WHERE id =".$ID;
 
       $result = $conectar->query($sql);
       if ($result->num_rows > 0) {
@@ -50,10 +50,8 @@ function leer_articulos($ID) {
         while($row = $result->fetch_assoc()) {
           
           $leer= [
-        "Tipo" =>utf8_encode($row["tipoArticulo"]),
-        "Nombre" => utf8_encode($row["nombreArticulo"]),
-        "Costo" => utf8_encode($row["costoVenta"]),
-        "Unidad" => utf8_encode($row["unidad"]),
+        "Nombre" => utf8_encode($row["nombre"]),
+        "Depto" => utf8_encode($row["id_departamento"]),
       ];
         }
       }
@@ -79,6 +77,38 @@ if ($result->num_rows > 0) {
 }
 $conectar->close();
 return $select;
+}
+function select_list_deptos(){
+  include 'conexion.php';
+
+$sql = "SELECT id,nombre,estatus FROM cat_departamentos WHERE estatus=1";
+$result = $conectar->query($sql);
+$tabla='';
+
+if ($result->num_rows > 0) {
+  $i=1;
+  $tabla='';
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+      $Estatus = ($row["estatus"] == 1) ? '<span class="label label-success" style="cursor: pointer"><i class="fa fa-thumbs-up"></i> Activo</span>' : '<span class="label label-danger" style="cursor: pointer"><i class="fa fa-thumbs-down"></i> Inactivo</span>';  
+        $tabla.= '<tr>
+                      <td><h5>'.$row["id"].'</h5></td>
+                      <td><h5>'.utf8_encode($row["nombre"]).'</h5></td>
+                      <td align="center"><a onclick=" return cargardatos('.intval($row["id"]).')" id="editar" class="label label-info" style="cursor: pointer"><i class="fa fa-pencil"></i> Editar</a></td>
+                      <td><form id="frm_activa'.$i.'" class="btn-a" method="POST" >
+                      '.$Estatus.'
+                      <input type="hidden" name="id" id="id" value="'.$row["id"].'">
+                      <input type="hidden" name="Estatus" id="Estatus" value="'.$row["estatus"].'">
+                      </form>
+                      </td>
+                      </tr>';
+        $i++;
+    }
+} else {
+    echo "0 results";
+}
+$conectar->close();
+return $tabla;
 }
 function get_select_deptos() {
       include 'conexion.php';

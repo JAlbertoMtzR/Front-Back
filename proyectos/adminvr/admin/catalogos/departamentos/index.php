@@ -24,11 +24,10 @@ include_once($pahtc."functions/select.php");
   </div>
         <div class="col-lg-4">
         	<form class="form-form" id="frmAlta" method="POST">
-              <h1 class="h1-form">Nuevo Usuario</h1>
+              <h1 class="h1-form">Nuevo Departamento</h1>
               <input class="input-form" name="modo" id="modo" value="0" type="hidden"/>
               <input class="input-form" name="idu" id="idu" value="0" type="hidden"/>
               <input class="input-form" id="nombre" name="nombre" placeholder="Nombre" type="text">
-              <?php echo get_select_deptos(); ?>
               <center><button class="button-form">Enviar</button></center>
          </form>
          <div id="mensaje" style="text-align: center;"></div>
@@ -39,8 +38,8 @@ include_once($pahtc."functions/select.php");
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
         <tr>
+          <th>ID</th>
           <th>Nombre</th>
-          <th>Departamento</th>
           <th>Editar</th>
           <th>Estatus</th>
         </tr>
@@ -120,13 +119,6 @@ $(document).ready(function() {
                               message: '<h4 style="color:red;font-weight:bold;">El Nombre es obligatorio</h4>'
                           }
                       } 
-                  },
-                  depto: {
-                      validators: {
-                          notEmpty: {
-                              message: '<h4 style="color:red;font-weight:bold;">El Departamento es obligatorio</h4>'
-                          }
-                      }
                   },
                   
                 },    

@@ -1,24 +1,22 @@
 <?php
 
-	function actualizar_articulos($params,$ID) {
-		include '../conexion/conexion.php';
+	function update_usuario_col($params,$ID) {
+		include 'conexion.php';
 
-		    $TIP = $params['Tipo'];
-	        $NOM = $params['Nombre'];
-			$COS = $params['Costo'];
-			$UNI = $params['Unidad'];
+	        $NOM = utf8_encode($params['Nombre']);
+			$DEP = $params['Depto'];
 
 
-		$sql = "UPDATE articulos SET tipoArticulo = ".$TIP.",nombreArticulo = '".$NOM."', costoVenta = ".$COS.", unidad='".$UNI."' WHERE id = ".$ID;
+		$sql = "UPDATE cat_usuarios_colaboradores SET nombre = '".$NOM."',id_departamento=".$DEP." WHERE id = ".$ID;
 		$result = $conectar->query($sql);
 		$ok = ($result) ? true : false;
 		$conectar->close();
-		$mensaje = ($ok) ? 'El articulo "'.$NOM.'" Se ha editado correctamente' : 'Error al editar';
+		$mensaje = ($ok) ? '<h3><span class="label label-info">"'.$NOM.'" Se ha editado</span></h3>' : 'Error al editar';
 		return $mensaje;
 	}
-	function estatus_clientes($id,$estatus) {
+	function update_estatus_usuario_col($id,$estatus) {
 		include '../conexion/conexion.php';
-		$sql = "UPDATE catclientes SET Estatus = ".$estatus." where ID_Cliente = ".$id;
+		$sql = "UPDATE cat_usuarios_colaboradores SET estatus = ".$estatus." WHERE id = ".$id;
 		$result = $conectar->query($sql);
 		$ok = ($result) ? true : false;
 		$conectar->close();
